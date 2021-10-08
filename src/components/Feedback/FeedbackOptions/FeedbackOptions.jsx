@@ -1,14 +1,14 @@
 import React from "react";
 
-const FeedbackOptions = ({ onGood, onNeutral, onBad }) => (
+const FeedbackOptions = ({ onLeaveFeedback }) => (
   <div className="#">
-    <button className="#" type="button" onClick={onGood}>
+    <button className="#" type="button" onClick={onLeaveFeedback}>
       Good
     </button>
-    <button className="#" type="button" onClick={onNeutral}>
+    <button className="#" type="button" onClick={onLeaveFeedback}>
       Neutral
     </button>
-    <button className="#" type="button" onClick={onBad}>
+    <button className="#" type="button" onClick={onLeaveFeedback}>
       Bad
     </button>
   </div>

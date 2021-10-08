@@ -1,9 +1,9 @@
 import React from "react";
-// import s from "./Section.module.css";
+import s from "./Section.module.css";
 
 const Section = ({ title, children }) => (
-  <section>
-    <h2>{title}</h2>
+  <section className={s.section}>
+    <h2 className={s.title}>{title}</h2>
     {children}
   </section>
 );
