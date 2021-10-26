@@ -13,26 +13,9 @@ class App extends Component {
   };
 
   leaveFeedback = (e) => {
-    const value = e.target.innerText;
-    if (value === "Good") {
-      this.setState((prevState) => {
-        return {
-          good: prevState.good + 1,
-        };
-      });
-    } else if (value === "Neutral") {
-      this.setState((prevState) => {
-        return {
-          neutral: prevState.neutral + 1,
-        };
-      });
-    } else if (value === "Bad") {
-      this.setState((prevState) => {
-        return {
-          bad: prevState.bad + 1,
-        };
-      });
-    }
+    this.setState((prevState) => ({
+      [e.target.value]: prevState[e.target.value] + 1,
+    }));
   };
 
   countTotalFeedback = () => {
@@ -48,14 +31,6 @@ class App extends Component {
 
     const percent = Math.ceil((good * 100) / sum);
     return percent;
-
-    //____После рендера по условию необходимость в проверке пропала___
-    // if (isNaN(percent)) {
-    //   return 0;
-    // } else {
-    //   return percent;
-    // }
-    //________________________________________________________________
   };
 
   render() {
@@ -64,7 +39,10 @@ class App extends Component {
     return (
       <>
         <Section title="Please leave feedback">
-          <FeedbackOptions onLeaveFeedback={this.leaveFeedback} />
+          <FeedbackOptions
+            options={Object.keys(this.state)}
+            onLeaveFeedback={this.leaveFeedback}
+          />
         </Section>
         <Section title="Statistics">
           {this.countTotalFeedback() === 0 ? (
